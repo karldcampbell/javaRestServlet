@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @FunctionalInterface
-public interface BaseHandler {
-    public default void handle(HttpServletRequest req, HttpServletResponse resp) {
-        runRoute(req, resp);
+public interface BaseHandler<A> {
+    public default void handle(HttpServletRequest req, HttpServletResponse resp, A a) {
+        runRoute(req, resp, a);
     }
 
-    public void runRoute(HttpServletRequest req, HttpServletResponse resp);
+    public void runRoute(HttpServletRequest req, HttpServletResponse resp, A a);
 }
